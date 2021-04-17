@@ -1,0 +1,1 @@
+Los archivos comprimidos deben ser .ZIP siempre con clave "1234"
