@@ -10,59 +10,18 @@ from nodos_lib import Nodo, crear_nodos
 from copy import copy
 #from python_tsp.exact import solve_tsp_dynamic_programming
 
-
-# filename="Recursos_de_la_catedra/Datos_no_euclidianos/TSP_IN_01.txt"
-
-# lineas=leer_lineas_archivo(filename)
-
-
-# #print((lineas[0]))
-# #print((lineas[1]))
-# #print((lineas[2]))
-
-# n=calc_dim(lineas[0])
-
-# # print(len(lineas))
-
-# # print(lineas)
-      
-# matrix=matrix_TSP(n,lineas)
-
-# print(matrix)
-
-
-# #permutation, distance = solve_tsp_dynamic_programming(matrix)
-
-# #print("Camino")
-# #print(permutation)
-
-
 def tsp_resolver(archivo_path):
-    
-#     # Pasos del algoritmo A*:
-#     #     Armar 2 listas, una vacia y una cerrada
-#     #     Asignarle todos los nodos como hijos al nodo de inicio
-#     #     Ponemos el nodo de inicio en la lista abierta
-        
-#     #     Mientras que haya nodos en la lista abierta:
-#     #         Ordenar la lista abierta de menor (costo) a mayor
-#     #         Agarrar el de menor costo y pasarlo a la lista cerrada
-            
-#     #         Era el nodo destino?
-#     #             No:
-#     #                 Pasar todos sus hijos a la lista abierta si es que no estan
-#     #             Si:
-#     #                 Terminar
-    
-    #Leemos el archivo
+       
     lineas = leer_lineas_archivo(archivo_path)
     n = calc_dim(lineas[0])
     
     #Creamos la matriz de costos
     matriz_costos = matrix_TSP(n, lineas)
     
+    heuristicas = [0 for i in range(n)]
+    
     #Creamos las ciudades
-    ciudades = crear_nodos(n)
+    ciudades = crear_nodos(n, heuristicas)
     
     #Creamos las listas de ciudades abiertas y cerradas, arrancan vacias
     abiertas = []
@@ -79,6 +38,8 @@ def tsp_resolver(archivo_path):
     
     abiertas.append(ciudad_inicio)
     
+    nodos_abiertos = 0
+    
     while len(abiertas) != 0:
         #Ordenamos los nodos abiertos por funcion de costo
         abiertas_costos = sorted(abiertas, key=lambda x: x.f)
@@ -87,9 +48,19 @@ def tsp_resolver(archivo_path):
         
         #Sacamos la ciudad con menor costo
         ciudad = abiertas.pop(0)
+        nodos_abiertos = nodos_abiertos + 1
         
         if(ciudad.is_meta()):
-            print('Terminamos')
+            camino = ciudad.get_herencia()
+            camino_id = []
+            for ciudad_i in camino:
+                camino_id.append(ciudad_i.identificador)
+            camino_id.reverse()
+            camino_id.append(ciudad.identificador)
+            print(archivo_path)
+            print('El camino es: {}'.format(camino_id))
+            print('El costo fue: {}'.format(ciudad.g))
+            print('Nodos abiertos: {}'.format(nodos_abiertos))
             break
         else:
             #La metemos en la lista de ciudades cerradas
@@ -99,11 +70,32 @@ def tsp_resolver(archivo_path):
             camino = ciudad.get_herencia()
             camino.append(ciudad)
             
-            #Recorro todas las ciudades para agregar a los hijos
+            #Si el camino ya tiene todas las ciudades agrego como hijo la meta
+            if len(camino) >= n:
+                meta = Nodo(0, meta=True)
+                ciudad.set_hijo(meta, matriz_costos)
+                abiertas.append(meta)
+            
+            #Recorro todas las ciudades para agregar a los hijos queno esten en el camino
             for ciudad_no_visitada in ciudades:
                 #Si la ciudad no esta en la herencia es un hijo
                 if not any(nodo.identificador == ciudad_no_visitada.identificador for nodo in camino):
-                    ciudad.set_hijo(copy(ciudad_no_visitada))
+                    hijo = copy(ciudad_no_visitada)
+                    
+                    ciudad.set_hijo(hijo, matriz_costos)
+                    
+                    #Recorro la lista para ver si el nodo no esta en abiertas o si esta con mayor costo
+                    hay_que_insertar = True
+                    for i, ciudad_abierta in enumerate(abiertas):
+                        if ciudad_abierta.identificador == hijo.identificador:
+                            if ciudad_abierta.get_costo() > hijo.get_costo():
+                                hay_que_insertar = True
+                                abiertas.pop(i)                           
+                            else:
+                                hay_que_insertar = False
+                    
+                    if hay_que_insertar == True:
+                        abiertas.append(hijo)
             
 
 
@@ -117,8 +109,10 @@ def tsp_resolver(archivo_path):
 # #Creamos la matriz de costos
 # matriz_costos = matrix_TSP(n, lineas)
 
+# heuristicas = [0 for i in range(n)]
+
 # #Creamos las ciudades
-# ciudades = crear_nodos(n)
+# ciudades = crear_nodos(n, heuristicas)
 
 # #Creamos las listas de ciudades abiertas y cerradas, arrancan vacias
 # abiertas = []
@@ -135,6 +129,8 @@ def tsp_resolver(archivo_path):
 
 # abiertas.append(ciudad_inicio)
 
+# nodos_abiertos = 0
+
 # while len(abiertas) != 0:
 #     #Ordenamos los nodos abiertos por funcion de costo
 #     abiertas_costos = sorted(abiertas, key=lambda x: x.f)
@@ -143,9 +139,19 @@ def tsp_resolver(archivo_path):
     
 #     #Sacamos la ciudad con menor costo
 #     ciudad = abiertas.pop(0)
+#     nodos_abiertos = nodos_abiertos + 1
     
 #     if(ciudad.is_meta()):
-#         print('Terminamos')
+#         camino = ciudad.get_herencia()
+#         camino_id = []
+#         for ciudad_i in camino:
+#             camino_id.append(ciudad_i.identificador)
+#         camino_id.reverse()
+#         camino_id.append(ciudad.identificador)
+#         print(archivo_path)
+#         print('El camino es: {}'.format(camino_id))
+#         print('El costo fue: {}'.format(ciudad.g))
+#         print('Nodos abiertos: {}'.format(nodos_abiertos))
 #         break
 #     else:
 #         #La metemos en la lista de ciudades cerradas
@@ -155,8 +161,30 @@ def tsp_resolver(archivo_path):
 #         camino = ciudad.get_herencia()
 #         camino.append(ciudad)
         
-#         #Recorro todas las ciudades para agregar a los hijos
+#         #Si el camino ya tiene todas las ciudades agrego como hijo la meta
+#         if len(camino) >= n:
+#             meta = Nodo(0, meta=True)
+#             ciudad.set_hijo(meta, matriz_costos)
+#             abiertas.append(meta)
+        
+#         #Recorro todas las ciudades para agregar a los hijos queno esten en el camino
 #         for ciudad_no_visitada in ciudades:
 #             #Si la ciudad no esta en la herencia es un hijo
 #             if not any(nodo.identificador == ciudad_no_visitada.identificador for nodo in camino):
-#                 ciudad.set_hijo(copy(ciudad_no_visitada))
+#                 hijo = copy(ciudad_no_visitada)
+                
+#                 ciudad.set_hijo(hijo, matriz_costos)
+                
+#                 #Recorro la lista para ver si el nodo no esta en abiertas o si esta con mayor costo
+#                 hay_que_insertar = True
+#                 for i, ciudad_abierta in enumerate(abiertas):
+#                     if ciudad_abierta.identificador == hijo.identificador:
+#                         if ciudad_abierta.get_costo() > hijo.get_costo():
+#                             hay_que_insertar = True
+#                             abiertas.pop(i)                           
+#                         else:
+#                             hay_que_insertar = False
+                
+#                 if hay_que_insertar == True:
+#                     abiertas.append(hijo)
+        

@@ -13,10 +13,12 @@ class Nodo:
     g = 0
     h = 0
     
-    tipo = ''
+    meta = False
     
-    def __init__(self, identificador):
+    def __init__(self, identificador, heuristica=0, meta=False):
         self.identificador = identificador
+        self.h = heuristica
+        self.meta=meta
         
     def set_padre(self, padre):
         self.padre = padre
@@ -32,22 +34,24 @@ class Nodo:
             padre = padre.get_padre()
         return herencia
     
-    def set_hijo(self, hijo):
-        self.hijos.append(hijo)
+    def set_hijo(self, hijo, mapa_costos):            
         hijo.set_padre(self)
+        hijo.g = self.g + mapa_costos[self.identificador, hijo.identificador]
+        self.hijos.append(hijo)
     
     def get_costo(self):
         self.f = self.g + self.h
         return self.f
     
     def is_meta(self):
-        return self.tipo == 'Meta'
+        return self.meta
+    
 
-def crear_nodos(cantidad):
+def crear_nodos(cantidad, heuristicas):
     nodos = []
     
-    for nodo_i in range(cantidad):
-        nodos.append(Nodo(nodo_i))
+    for i, nodo_i in enumerate(range(cantidad)):
+        nodos.append(Nodo(nodo_i, heuristicas[i]))
     
     return nodos
 
