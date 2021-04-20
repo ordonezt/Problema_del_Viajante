@@ -1,2 +1,41 @@
 # Problema_del_Viajante
-Solucion al problema del viajante de comercio (TSP)
+Solucion al problema del viajante de comercio (TSP) usando el metodo de busqueda A* (A estrella)
+
+## Resultados (tag v0.1.0)
+- Archivo 1  
+	- [X] Sin heuristica
+	- [ ] Con heuristica
+- Archivo 2  
+	- [X] Sin heuristica
+	- [ ] Con heuristica
+- Archivo 3  
+	- [ ] Sin heuristica
+	    - El costo da 32 en vez de dar 31
+	- [ ] Con heuristica
+- Archivo 4  
+	- [X] Sin heuristica
+	- [ ] Con heuristica
+- Archivo 5  
+	- [ ] Sin heuristica
+	- [ ] Con heuristica
+- Archivo 6  
+	- [ ] Sin heuristica
+	- [ ] Con heuristica
+- Archivo 7  
+	- [ ] Sin heuristica
+	- [ ] Con heuristica
+- Archivo 8  
+	- [ ] Sin heuristica
+	- [ ] Con heuristica
+- Archivo 9  
+	- [ ] Sin heuristica
+	- [ ] Con heuristica
+- Archivo 10  
+	- [ ] Sin heuristica
+	- [ ] Con heuristica
+- Archivo 11  
+	- [ ] Sin heuristica
+	- [ ] Con heuristica
+- Archivo 12  
+	- [ ] Sin heuristica
+	- [ ] Con heuristica
