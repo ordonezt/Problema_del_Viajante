@@ -28,11 +28,12 @@ class Nodo(object):
 		self.padre = index_parent
 
 
-def FindBest(ciudad,matriz_costos,matriz_heur,lista_nodos_previos):
+def FindBest(ciudad,matriz_costos,matriz_heur,lista_nodos_previos,lista_nodos_cerrada):
 	##########	FUNCION ENCARGADA DE ENCONTRAR EL HIJO CON EL MENOR COSTO #######
 
 	costo_previo = 100000 ## costo para la primer comparacion
 	costo_act = 0	
+	
 	if len(lista_nodos_previos) < n: #chequeo si no recorri toda la rama
 			
 		for i in range(n):
@@ -51,11 +52,11 @@ def FindBest(ciudad,matriz_costos,matriz_heur,lista_nodos_previos):
 					# ahora el costo siguiente debe ser mas bajo
 					costo_previo = costo_act 	
 
+			
+		
 		return nodo_hijo
-	else:
-		return False
 # #Para correr el algoritmo como script descomentar
-archivo_path = 'Recursos_de_la_catedra/Datos_no_euclidianos/TSP_IN_06.txt'
+archivo_path = 'Recursos_de_la_catedra/Datos_no_euclidianos/TSP_IN_11.txt'
 
  #Leemos el archivo
 lineas = leer_lineas_archivo(archivo_path)
@@ -78,7 +79,8 @@ for i, nodo_i in enumerate(range(n)):
     lista_nodos_abierta.append(Nodo(0,0,nodo_i))
 lista_nodos_abierta_sorted =copy(lista_nodos_abierta)
 ### TOMO UN NODO DE INICIO AL AZAR ###	
-random.shuffle(lista_nodos_abierta_sorted)
+
+#random.shuffle(lista_nodos_abierta_sorted)
 primer_ciudad = lista_nodos_abierta_sorted[0]
 print("La ciudad de inicio es: "+str(primer_ciudad.index_name) )
 
@@ -88,22 +90,44 @@ lista_nodos_previos.append(primer_ciudad.index_name) # en esta lista guardo los 
 ## cual es el hijo de menor coste?
 lista_nodos_cerrada.append(lista_nodos_abierta[0]) # coloco el primer nodo a expandir en la lista cerrada
 
-nodo_hijo = FindBest(primer_ciudad,matriz_costos,matriz_heur,lista_nodos_previos)
+nodo_hijo = FindBest(primer_ciudad,matriz_costos,matriz_heur,lista_nodos_previos,lista_nodos_cerrada)
+nodo_hijo.set_parent(primer_ciudad.index_name)
 lista_nodos_cerrada.append(nodo_hijo)
 lista_nodos_previos.append(nodo_hijo.index_name)
-print("El hijo de menor coste es:"+str(nodo_hijo.index_name)+"\n con costo:"+str(nodo_hijo.g) )
-	
-for i in range(n-1):
-	nodo_hijo = FindBest(nodo_hijo, matriz_costos,matriz_heur,lista_nodos_previos)
-	if nodo_hijo == False:
-		# llego al final de la rama
-		break
+
+#print("El hijo de menor coste es:"+str(nodo_hijo.index_name)+"\n con costo:"+str(nodo_hijo.g) )
+
+parent_index = nodo_hijo.index_name
+
+for i in range(n-2):
+	#print(i)
+	#recorro los nodos hasta el ultimo nodo	
+	print("Parent: "+str(parent_index))
+	nodo_hijo = FindBest(nodo_hijo, matriz_costos,matriz_heur,lista_nodos_previos,lista_nodos_cerrada)
+	### VOY GUARDANDO LOS PADRES
+	print("Hijo: "+str(nodo_hijo.index_name))
+	parent_index = nodo_hijo.index_name # el padre del proximo nodo es este
+	### AGREGO EL NODO A LA LISTA CERRADA
 	lista_nodos_cerrada.append(nodo_hijo)
 	lista_nodos_previos.append(nodo_hijo.index_name)
-	print("El hijo de menor coste es:"+str(nodo_hijo.index_name)+"\n con costo:"+str(nodo_hijo.g) )
 
+	if nodo_hijo.index_name == primer_ciudad.index_name:
+		# llego al final de la rama
+		print("break")
+		nodo_hijo.g = matriz_costos[nodo_hijo.padre][primer_ciudad.index_name] 
+		break
+
+lista_nodos_abierta[0].g = matriz_costos[nodo_hijo.index_name][primer_ciudad.index_name]
+lista_nodos_abierta[0].h = matriz_heur[i][primer_ciudad.index_name]
+lista_nodos_cerrada.append(lista_nodos_abierta[0])
+lista_nodos_previos.append(lista_nodos_abierta[0].index_name)
+
+j=0
 for i in lista_nodos_cerrada:
-	costo_total = i.g + costo_total 	
+	print(costo_total)
+	if(j < n):
+		costo_total = i.g + costo_total 	
+	j = j+1	
 
 print("el camino encontrado es: " + str(lista_nodos_previos))
 print("con coste total = ",costo_total)
