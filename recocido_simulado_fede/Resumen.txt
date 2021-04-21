@@ -1,0 +1,16 @@
+1) Con la clase ReadData se levanta el tamaño, el tipo de costo (Explícito, euclidiano o geográfico) y devuelve la matriz de datos. Lo interesante es que es compatible con todos los archivos .tsp pero podríamos hacer uno "hardcodeado" para los archivos que tenemos.
+2) Esa matriz se la pasa a la clase SA (Simulated Annealing) que declara
+	a) cantidad de iteraciones (muy alta)
+	b) temperatura de stop (muy baja)
+	c) salto de temperatura (alfa)
+	d) temperatura actual que es función de la cantidad de datos (está como raíz cuadrada para que sea menor a la cantidad de datos)
+	e) hay una variable propia fitness para almacenar el mejor recorrido
+3) Cuando se le da a que comience (anneal) implementa una solución inicial (en este caso por TwoOPT que es la Greedy que reordena los nodos pero podría ser por Nearest Neighbor)
+4) Genera iteraciones de valores hasta que la temperatura llegue a ese valor bajo o las iteraciones lleguen al valor máximo
+	a) Genera dos números random para modificar la matriz de datos (da vuelta los datos en X e Y) a partir de esos índices aleatorios
+	b) Calcula la fitness de esa solución (va en orden 1...2..3.. hasta el final calculando el costo de esa solución y le suma el costo de N hasta la primera)
+	c) Si esa fitness es menor que la que mejor almacenada hasta ahora, la pisa. Si esa fitness es mayor (no me sirve) genera un número random entre 0 y 1 para comparar si esa posibilidad es mayor que la probabilidad que tiene esa solución (con la formulita mágica esa de e^(...)). Esta última parte no sé bien porqué lo hace (intentar un número random para ver si es mayor que la posibilidad de resolución de esta solución)
+	d) En fin, si la aceptó, pisa la mejor fitness, sino sigue de largo. Decrementa la temperatura actual alfa veces y suma 1 a las iteraciones (y almacena esa solución después para graficar la evolución y para compara cuánto fue mejorando) y sigue iterando
+5) Optimiza esa solución usando el TwoOPT de nuevo (greedy) pero no haría falta por lo que no haría falta
+6) Imprime la mejor solución y fin...
+7) Se puede ver las fitness en un gráfico o en un mapa de puntos
