@@ -55,8 +55,8 @@ def FindBest(ciudad,matriz_costos,lista_nodos_previos,lista_nodos_cerrada):
 			# para que no se compare consigo misma
 			if i not in lista_nodos_previos:
 				
-				#costo_act = matriz_costos[ciudad.index_name][i] + (n-i) * int(FindMinCostLevel(matriz_costos,ciudad,lista_nodos_previos,lista_nodos_abierta) )
-				costo_act = matriz_costos[ciudad.index_name][i] + (n-i)*minimo_costo
+				#costo_act = matriz_costos[ciudad.index_name][i] + (n-len(lista_nodos_previos)) * int(FindMinCostLevel(matriz_costos,ciudad,lista_nodos_previos,lista_nodos_abierta) )
+				costo_act = matriz_costos[ciudad.index_name][i] + minimo_costo/(i)
 				#costo_act = ciudad.f # evaluo el costo total f = g + h 
 				if costo_act < costo_previo:
 					#print(costo_act)
@@ -66,8 +66,8 @@ def FindBest(ciudad,matriz_costos,lista_nodos_previos,lista_nodos_cerrada):
 					## cargo los costos de ese nodo hijo
 					nodo_hijo.g =  matriz_costos[ciudad.index_name][i]
 
-					#nodo_hijo.h = (n-i) * int(FindMinCostLevel(matriz_costos,ciudad,lista_nodos_previos,lista_nodos_abierta) )
-					nodo_hijo.h = (n-i)*minimo_costo
+					#nodo_hijo.h = (n-len(lista_nodos_previos)) * int(FindMinCostLevel(matriz_costos,ciudad,lista_nodos_previos,lista_nodos_abierta) )
+					nodo_hijo.h = minimo_costo/(i)
 					print("El costo h del nodo "+str(nodo_hijo.index_name)+" es "+str(nodo_hijo.h) )
 					## cargo el indice del padre
 					nodo_hijo.set_parent(ciudad.index_name)
@@ -78,7 +78,7 @@ def FindBest(ciudad,matriz_costos,lista_nodos_previos,lista_nodos_cerrada):
 		
 		return nodo_hijo
 # #Para correr el algoritmo como script descomentar
-archivo_path = 'Recursos_de_la_catedra/Datos_no_euclidianos/TSP_IN_12.txt'
+archivo_path = 'Recursos_de_la_catedra/Datos_no_euclidianos/TSP_IN_08.txt'
 
  #Leemos el archivo
 lineas = leer_lineas_archivo(archivo_path)
@@ -97,6 +97,7 @@ for i in matriz_costos:
 	min_values.append(i[i>0])
 minimo_costo = np.min(min_values)	
 print("El minimo costo encontrado en toda la matriz es : "+str(minimo_costo))
+
 lista_nodos_abierta =[]
 lista_nodos_abierta_sorted =[]
 lista_nodos_cerrada =[]
