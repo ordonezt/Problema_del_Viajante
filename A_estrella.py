@@ -70,58 +70,58 @@ def Encontrar_camino(lista_nodos_abierta,lista_nodos_cerrada,matriz_costos,minim
         #### elejimos el mejor nodo a expandir evaluando el minimo F = g+h
       
         ### preguntamos si el nodo de la lista cerrada tiene como ultimo destino la meta
-        if nodo.ciudad == 0 and len(nodo.index_name) > 1:
-            camino_final=nodo
-            print("salimos")
-            ## si es asi marcamos la meta para salir del loop
-            ultimo_nodo = "meta"
-        else:
-            ## si no es asi agregamos a la lista abierta los nodos frontera siguientes al nodo expandido
-            for nodo in lista_nodos_abierta:
+        # if nodo.ciudad == 0 and len(nodo.index_name) > 1:
+        #     camino_final=nodo
+        #     print("salimos")
+        #     ## si es asi marcamos la meta para salir del loop
+        #     ultimo_nodo = "meta"
+        # else:
+        ## si no es asi agregamos a la lista abierta los nodos frontera siguientes al nodo expandido
+        for nodo in lista_nodos_abierta:
 
-                lista_de_costos.append(nodo.f)
-            
-            nodo_a_expandir = lista_nodos_abierta[np.argmin(lista_de_costos)]
-            print("con costo :",nodo_a_expandir.f)
-            
-            ### tomamos ahora el nodo y lo colocamos en la lista cerrada
-            lista_nodos_cerrada.append(lista_nodos_abierta.pop(np.argmin(lista_de_costos)))
-            print("ciudad",nodo_a_expandir.ciudad)
-            ## armamos la lista de ciudades que puede visitar ese nodo
-            for i in lista_ciudades:
-                if i not in nodo_a_expandir.index_name and i != nodo_a_expandir.ciudad :
-                    nodo_a_expandir.hijos.append(i)
+            lista_de_costos.append(nodo.f)
+        
+        nodo_a_expandir = lista_nodos_abierta[np.argmin(lista_de_costos)]
+        print("con costo :",nodo_a_expandir.f)
+        
+        ### tomamos ahora el nodo y lo colocamos en la lista cerrada
+        lista_nodos_cerrada.append(lista_nodos_abierta.pop(np.argmin(lista_de_costos)))
+        print("ciudad",nodo_a_expandir.ciudad)
+        ## armamos la lista de ciudades que puede visitar ese nodo
+        for i in lista_ciudades:
+            if i not in nodo_a_expandir.index_name and i != nodo_a_expandir.ciudad :
+                nodo_a_expandir.hijos.append(i)
 
-                # if i == 0 and len(index_name) == n:
-                #     nodo_a_expandir.hijos.append(i)
+            # if i == 0 and len(index_name) == n:
+            #     nodo_a_expandir.hijos.append(i)
 
-            print("posibles ciudades a visitar por este nodo : ", nodo_a_expandir.hijos )
-            ## armamos la lista abierta agregando los nodos hijos de este nodo
-            for i in nodo_a_expandir.hijos:
-                    index_name = nodo_a_expandir.index_name+[i]
-                    h = minimo_costo *(n - len(index_name) )
-                    nodo = Nodo(matriz_costos[i][nodo_a_expandir.ciudad],h,index_name)
-                    lista_nodos_abierta.append(nodo)
-            
-            nodo = nodo_a_expandir
-
-            print("la lista de nodos abierta posee")    
-            for i in lista_nodos_abierta:
-                print(str(i.index_name)+"con costo "+str(i.f) )
-
-            lista_de_costos = []
-            if len(nodo.index_name) == n :
-                ### como llegamos al ultimo nodo antes de la meta y la ciudad inicial ya esta en camino
-                ### agregamos la ciudad inicial y creamos el nodo [0-1-2-....-0]
-                
-                #index_name = nodo.index_name+[0]
-                h = 0
-                nodo = Nodo(matriz_costos[0][nodo_a_expandir.ciudad],h,index_name)
-                
+        print("posibles ciudades a visitar por este nodo : ", nodo_a_expandir.hijos )
+        ## armamos la lista abierta agregando los nodos hijos de este nodo
+        for i in nodo_a_expandir.hijos:
+                index_name = nodo_a_expandir.index_name+[i]
+                h = minimo_costo *(n - len(index_name) )
+                nodo = Nodo(matriz_costos[i][nodo_a_expandir.ciudad],h,index_name)
                 lista_nodos_abierta.append(nodo)
-                # como el index_name va a haciendo un append de las ciudades, cuando llego a la longitud n-1 ya estoy en el final
-                ultimo_nodo = "meta"
-                camino_final = lista_nodos_abierta.pop()
+        
+        nodo = nodo_a_expandir
+
+        print("la lista de nodos abierta posee")    
+        for i in lista_nodos_abierta:
+            print(str(i.index_name)+"con costo "+str(i.f) )
+
+        lista_de_costos = []
+        if len(nodo.index_name) == n :
+            ### como llegamos al ultimo nodo antes de la meta y la ciudad inicial ya esta en camino
+            ### agregamos la ciudad inicial y creamos el nodo [0-1-2-....-0]
+            print("entra")
+            index_name = nodo.index_name+[0]
+            h = 0
+            nodo = Nodo(matriz_costos[0][nodo_a_expandir.ciudad],h,index_name)
+            
+            lista_nodos_abierta.append(nodo)
+            # como el index_name va a haciendo un append de las ciudades, cuando llego a la longitud n-1 ya estoy en el final
+            ultimo_nodo = "meta"
+            camino_final = nodo
         #break
     print("camino final " , camino_final.index_name)
     costo_total = 0
@@ -129,9 +129,9 @@ def Encontrar_camino(lista_nodos_abierta,lista_nodos_cerrada,matriz_costos,minim
         costo_total = costo_total + matriz_costos[camino_final.index_name[i]][camino_final.index_name[i-1]]
 
     print("con costo total",costo_total)
-
+    print("Cantidad de nodos abiertos",len(lista_nodos_cerrada)+1)
         
-archivo_path = 'Recursos_de_la_catedra/Datos_no_euclidianos/TSP_IN_10.txt'
+archivo_path = 'Recursos_de_la_catedra/Datos_no_euclidianos/TSP_IN_12.txt'
 
  #Leemos el archivo
 lineas = leer_lineas_archivo(archivo_path)
