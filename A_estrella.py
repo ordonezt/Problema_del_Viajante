@@ -93,16 +93,13 @@ def Encontrar_camino(lista_nodos_abierta,lista_nodos_cerrada,matriz_costos,minim
             if i not in nodo_a_expandir.index_name and i != nodo_a_expandir.ciudad :
                 nodo_a_expandir.hijos.append(i)
 
-            # if i == 0 and len(index_name) == n:
-            #     nodo_a_expandir.hijos.append(i)
-
         print("posibles ciudades a visitar por este nodo : ", nodo_a_expandir.hijos )
 
         ## armamos la lista abierta agregando los nodos hijos de este nodo
         for i in nodo_a_expandir.hijos:
 
                 index_name = nodo_a_expandir.index_name+[i]
-                h = minimo_costo *(n - len(index_name)  )
+                h = minimo_costo + (n - len(index_name)  )
                 nodo = Nodo(matriz_costos[i][nodo_a_expandir.ciudad] , h , index_name)
                 
                 lista_nodos_abierta.append(nodo)
@@ -117,7 +114,6 @@ def Encontrar_camino(lista_nodos_abierta,lista_nodos_cerrada,matriz_costos,minim
         if len(nodo.index_name) == n :
             ### como llegamos al ultimo nodo antes de la meta y la ciudad inicial ya esta en camino
             ### agregamos la ciudad inicial y creamos el nodo [0-1-2-....-0]
-            print("entra")
             index_name = nodo.index_name+[0]
             h = 0
             nodo = Nodo(matriz_costos[0][nodo_a_expandir.ciudad],h,index_name)
