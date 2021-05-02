@@ -13,7 +13,6 @@ import numpy as np
 import time
 import glob
 
-#from python_tsp.exact import solve_tsp_dynamic_programming
 def tsp_resolver(archivo_path):
        
     #Leemos el archivo
@@ -88,22 +87,15 @@ def tsp_resolver(archivo_path):
             for ciudad_no_visitada in ciudades:
                 #Si la ciudad no esta en la herencia es un hijo
                 if not any(nodo.identificador == ciudad_no_visitada.identificador for nodo in camino):
+                    #Hago una copia del hijo
                     hijo = copy(ciudad_no_visitada)
+                    #Le cargo la heuristica
                     hijo.h = costo_minimo * (n - n_recorridas + 1)#((n - n_recorridas + 1) ** 2) / (n+1)#(n - n_recorridas + 1) * n_recorridas / (n+1)
+                    #Defino la relacion padre-hijo
                     ciudad.set_hijo(hijo, matriz_costos)
                     
-                    #Recorro la lista para ver si el nodo no esta en abiertas o si esta con mayor costo
-                    hay_que_insertar = True
-                    # for i, ciudad_abierta in enumerate(abiertas):
-                    #     if ciudad_abierta.identificador == hijo.identificador:
-                    #         if ciudad_abierta.get_costo() >= hijo.get_costo():
-                    #             hay_que_insertar = True
-                    #             #abiertas.pop(i)                           
-                    #         else:
-                    #             hay_que_insertar = False
-                    
-                    if hay_que_insertar == True:
-                        abiertas.append(hijo)
+                    #Inserto el nodo nuevo en la lista abierta
+                    abiertas.append(hijo)
             
 
 def tsp_resolver_todos():
