@@ -37,6 +37,7 @@ class Nodo:
     def set_hijo(self, hijo, mapa_costos):            
         hijo.set_padre(self)
         hijo.g = self.g + mapa_costos[self.identificador, hijo.identificador]
+        hijo.f = hijo.g + hijo.h
         self.hijos.append(hijo)
     
     def get_costo(self):
@@ -47,11 +48,11 @@ class Nodo:
         return self.meta
     
 
-def crear_nodos(cantidad, heuristicas):
+def crear_nodos(cantidad):
     nodos = []
     
     for i, nodo_i in enumerate(range(cantidad)):
-        nodos.append(Nodo(nodo_i, heuristicas[i]))
+        nodos.append(Nodo(nodo_i))
     
     return nodos
 
