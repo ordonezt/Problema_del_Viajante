@@ -2,7 +2,7 @@
 """
 Created on Sat Apr 17 10:36:06 2021
 
-@author: Usuario
+@author: Grupo 1
 """
 import numpy as np
 from datetime import timedelta
@@ -56,6 +56,16 @@ def matrix_TSP(n,lin):
     
         return(matrix)
 
+def imprimir_camino(ciudad, mensaje=None):
+    camino_str = []
+    camino = ciudad.get_herencia()
+    for ciudad_i in camino:
+        camino_str.append(ciudad_i.identificador)
+    camino_str.reverse()
+    camino_str.append(ciudad.identificador)
+    print(mensaje, camino_str, " costo de {}".format(ciudad.get_costo()))
+    return
+
 def guardar_resultados(path_archivo, meta, nodos_abiertos, tiempo, heuristica=None):
     # La información que contendrá el archivo de salida es la siguiente:
 
@@ -79,7 +89,7 @@ def guardar_resultados(path_archivo, meta, nodos_abiertos, tiempo, heuristica=No
         
     id_archivo = path_archivo[-6:-4]
     extension = '.txt'
-    path = 'Resultados_TSP/TSP_OUT_' + id_archivo + '_BBMO' + heuristica_str + extension
+    path = 'Resultados/TSP_OUT_' + id_archivo + '_BBMO' + heuristica_str + extension
     
     with open(path, 'w+') as archivo:
         
@@ -101,4 +111,5 @@ def guardar_resultados(path_archivo, meta, nodos_abiertos, tiempo, heuristica=No
         #Escribo el tiempo de ejecucion
         tiempo_str = str(timedelta(seconds=tiempo))
         archivo.write(tiempo_str + ';\n')
-        
+    
+    return

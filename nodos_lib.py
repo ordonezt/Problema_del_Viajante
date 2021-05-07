@@ -3,7 +3,7 @@
 """
 Created on Sat Apr 17 15:06:38 2021
 
-@author: ord
+@author: Grupo 1
 """
 
 class Nodo:
