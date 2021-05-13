@@ -12,6 +12,8 @@ from copy import copy
 import sys
 import numpy as np
 import time
+import matplotlib.pyplot as plt
+
 # import glob
 
 if len(sys.argv) != 2 and len(sys.argv) != 3:
@@ -22,7 +24,7 @@ if len(sys.argv) != 2 and len(sys.argv) != 3:
 archivo = sys.argv[1]
 
 if len(sys.argv) == 3:
-    tipo_heuristica = sys.argv[2]
+    tipo_heuristica = int(sys.argv[2])
 else:
     tipo_heuristica = 3
     
@@ -58,6 +60,11 @@ imprimir_camino(ciudad_inicio, mensaje="Agregue a abiertas")
 #Empieza a correr el tiempo...
 tiempo_inicial = time.perf_counter()
 
+vector_tiempos = []
+vector_nodos_abiertos = []
+vector_velocidades = []
+vector_tamanio_abiertos = []
+
 while len(abiertas) != 0:
     #Ordenamos los nodos abiertos por funcion de costo f
     abiertas = sorted(abiertas, key=lambda x: x.f)
@@ -66,6 +73,16 @@ while len(abiertas) != 0:
     ciudad = abiertas.pop(0)
     #Incrementamos la variable de cantidad de nodos abiertos
     nodos_abiertos = nodos_abiertos + 1
+    
+    tiempo_parcial = time.perf_counter() - tiempo_inicial
+    velocidad = nodos_abiertos / tiempo_parcial
+    tamanio_abiertos = sys.getsizeof(abiertas)
+    vector_tiempos.append(tiempo_parcial)
+    vector_nodos_abiertos.append(nodos_abiertos)
+    vector_tamanio_abiertos.append(tamanio_abiertos)
+    
+    if nodos_abiertos != 1:
+        vector_velocidades.append(velocidad)
     
     #Si la ciudad es la meta, terminamos, imprimo todo
     if(ciudad.is_meta()):
@@ -139,6 +156,29 @@ while len(abiertas) != 0:
                 #Vuelvo al loop: ordeno la lista abiertas, extraigo el de menor costo, etc...
 else:
     print('Error, lista abierta vacia')
+
+plt.figure()
+plt.plot(vector_nodos_abiertos, vector_tiempos)
+plt.xlabel('Nodos abiertos')
+plt.ylabel('Tiempo [s]')
+plt.title(archivo + ' h{}'.format(tipo_heuristica))
+plt.savefig('Resultados/' + archivo[0:9] + '_{}_'.format(tipo_heuristica) +'tiempo' + '.png')
+
+plt.figure()
+plt.plot(vector_nodos_abiertos[1:], vector_velocidades)
+plt.xlabel('Nodos abiertos')
+plt.ylabel('Velocidad [nodos/segundo]')
+plt.title(archivo + ' h{}'.format(tipo_heuristica))
+plt.savefig('Resultados/' + archivo[0:9] + '_{}_'.format(tipo_heuristica) +'velocidad' + '.png')
+
+plt.figure()
+plt.plot(vector_nodos_abiertos, vector_tamanio_abiertos)
+plt.xlabel('Nodos abiertos')
+plt.ylabel('Almacenamiento [bytes]')
+plt.title(archivo + ' h{}'.format(tipo_heuristica))
+plt.savefig('Resultados/' + archivo[0:9] + '_{}_'.format(tipo_heuristica) +'almacenamiento' + '.png')
+
+#plt.show()
 
 # def tsp_resolver_todos():
     

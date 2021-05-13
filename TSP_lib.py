@@ -6,6 +6,7 @@ Created on Sat Apr 17 10:36:06 2021
 """
 import numpy as np
 from datetime import timedelta
+import matplotlib.pyplot as plt
 
 def leer_archivo(filename):
         
@@ -113,3 +114,17 @@ def guardar_resultados(path_archivo, meta, nodos_abiertos, tiempo, heuristica=No
         archivo.write(tiempo_str + ';\n')
     
     return
+
+def mapa_calor(archivo):
+    archivo_path = 'Entradas/' + archivo
+    
+    #Leemos el archivo
+    lineas = leer_lineas_archivo(archivo_path)
+    n = calc_dim(lineas[0])
+    
+    #Creamos la matriz de costos
+    matriz_costos = matrix_TSP(n, lineas)
+    
+    plt.imshow(matriz_costos)
+    plt.title(archivo + ' Mapa')
+    plt.show()
