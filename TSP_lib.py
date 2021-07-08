@@ -57,17 +57,18 @@ def matrix_TSP(n,lin):
     
         return(matrix)
 
-def imprimir_camino(ciudad, mensaje=None):
-    camino_str = []
-    camino = ciudad.get_herencia()
-    for ciudad_i in camino:
-        camino_str.append(ciudad_i.identificador)
-    camino_str.reverse()
-    camino_str.append(ciudad.identificador)
-    print(mensaje, camino_str, " costo de {}".format(ciudad.get_costo()))
+def imprimir_camino(nodo, mensaje=None):
+    # camino_str = []
+    camino = nodo.get_herencia()
+    camino.append(nodo.ciudad_cabecera)
+    # for ciudad_i in camino:
+    #     camino_str.append(ciudad_i.identificador)
+    # camino_str.reverse()
+    # camino_str.append(nodo.ciudad_cabecera)
+    print(mensaje, camino, " costo de {}".format(nodo.get_costo()))
     return
 
-def guardar_resultados(path_archivo, meta, nodos_abiertos, tiempo, heuristica=None):
+def guardar_resultados(path_archivo, meta, nodos_abiertos, tiempo, aproximacion, heuristica=None):
     # La información que contendrá el archivo de salida es la siguiente:
 
     # TSP_OUT_xx_XXX.txt:
@@ -87,21 +88,22 @@ def guardar_resultados(path_archivo, meta, nodos_abiertos, tiempo, heuristica=No
         heuristica_str = str(heuristica)
     else:
         heuristica_str = ''
+    
+    if aproximacion == 'si':
+        msg_aprox = '_mejorado'
+    else:
+        msg_aprox = ''
         
     id_archivo = path_archivo[-6:-4]
     extension = '.txt'
-    path = 'Resultados/TSP_OUT_' + id_archivo + '_BBMO' + heuristica_str + extension
+    path = 'Resultados/TSP_OUT_' + id_archivo + '_BBMO' + heuristica_str + msg_aprox + extension
     
     with open(path, 'w+') as archivo:
         
         #formo la string del camino
         camino = meta.get_herencia()
-        camino_id = []
-        for ciudad_i in camino:
-            camino_id.append(ciudad_i.identificador)
-        camino_id.reverse()
-        camino_id.append(meta.identificador)
-        archivo.write(str(camino_id) + ';\n')
+        camino.append(meta.ciudad_cabecera)
+        archivo.write(str(camino) + ';\n')
         
         #Escribo el costo
         archivo.write(str(meta.get_costo()) + ';\n')

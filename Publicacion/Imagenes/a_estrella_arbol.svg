@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   sodipodi:docname="a_estrella_arbol.svg"
+   inkscape:export-filename="/mnt/HddLinux/Documentos/Facultad/Tomas/6to/Inteligencia_Artificial/Problema_del_Viajante/Publicacion/Imagenes/a_estrella_arbol.png"
+   inkscape:export-xdpi="1200"
+   inkscape:export-ydpi="1200">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="189.77482"
+     inkscape:cy="627.18565"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1848"
+     inkscape:window-height="1016"
+     inkscape:window-x="72"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="fill:#0090ff;fill-opacity:1;stroke:#000000;stroke-width:0.60780746;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path815"
+       cx="86.603806"
+       cy="84.813614"
+       r="9.7587299" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="86.896873"
+       y="84.860855"
+       id="text819"><tspan
+         sodipodi:role="line"
+         id="tspan817"
+         x="86.896873"
+         y="84.860855"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458332">Nodo</tspan><tspan
+         sodipodi:role="line"
+         x="86.896873"
+         y="93.680298"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan821">1</tspan></text>
+    <circle
+       style="fill:#0090ff;fill-opacity:1;stroke:#000000;stroke-width:0.60780746;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path815-3"
+       cx="46.113098"
+       cy="118.68974"
+       r="9.7587299" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="46.406166"
+       y="118.73698"
+       id="text819-6"><tspan
+         sodipodi:role="line"
+         id="tspan817-7"
+         x="46.406166"
+         y="118.73698"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458332">Nodo</tspan><tspan
+         sodipodi:role="line"
+         x="46.406166"
+         y="127.55642"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan821-5">2</tspan></text>
+    <circle
+       style="fill:#0090ff;fill-opacity:1;stroke:#000000;stroke-width:0.60780746;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path815-35"
+       cx="86.367561"
+       cy="120.01265"
+       r="9.7587299" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="86.660622"
+       y="120.05989"
+       id="text819-62"><tspan
+         sodipodi:role="line"
+         id="tspan817-9"
+         x="86.660622"
+         y="120.05989"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458332">Nodo</tspan><tspan
+         sodipodi:role="line"
+         x="86.660622"
+         y="128.87933"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan821-1">3</tspan></text>
+    <circle
+       style="fill:#0090ff;fill-opacity:1;stroke:#000000;stroke-width:0.60780746;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path815-2"
+       cx="127.66146"
+       cy="120.01265"
+       r="9.7587299" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="127.95454"
+       y="120.05988"
+       id="text819-7"><tspan
+         sodipodi:role="line"
+         id="tspan817-0"
+         x="127.95454"
+         y="120.05988"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458332">Nodo</tspan><tspan
+         sodipodi:role="line"
+         x="127.95454"
+         y="128.87933"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan821-9">4</tspan></text>
+    <circle
+       style="fill:#0090ff;fill-opacity:1;stroke:#000000;stroke-width:0.60780746;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path815-36"
+       cx="20.599703"
+       cy="153.55804"
+       r="9.7587299" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="20.892769"
+       y="153.60529"
+       id="text819-0"><tspan
+         sodipodi:role="line"
+         id="tspan817-6"
+         x="20.892769"
+         y="153.60529"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458332">Nodo</tspan><tspan
+         sodipodi:role="line"
+         x="20.892769"
+         y="162.42473"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan821-2">5</tspan></text>
+    <circle
+       style="fill:#0090ff;fill-opacity:1;stroke:#000000;stroke-width:0.60780746;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path815-6"
+       cx="51.026787"
+       cy="152.99107"
+       r="9.7587299" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="51.319855"
+       y="153.03831"
+       id="text819-1"><tspan
+         sodipodi:role="line"
+         id="tspan817-8"
+         x="51.319855"
+         y="153.03831"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458332">Nodo</tspan><tspan
+         sodipodi:role="line"
+         x="51.319855"
+         y="161.85776"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan821-7">6</tspan></text>
+    <circle
+       style="fill:#0090ff;fill-opacity:1;stroke:#000000;stroke-width:0.60780746;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path815-9"
+       cx="20.221727"
+       cy="190.78868"
+       r="9.7587299" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="20.514793"
+       y="190.83592"
+       id="text819-2"><tspan
+         sodipodi:role="line"
+         id="tspan817-02"
+         x="20.514793"
+         y="190.83592"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458332">Nodo</tspan><tspan
+         sodipodi:role="line"
+         x="20.514793"
+         y="199.65536"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan821-3">9</tspan></text>
+    <circle
+       style="fill:#0090ff;fill-opacity:1;stroke:#000000;stroke-width:0.60780746;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path815-36-7"
+       cx="114.81027"
+       cy="152.7076"
+       r="9.7587299" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="115.10333"
+       y="152.75484"
+       id="text819-0-5"><tspan
+         sodipodi:role="line"
+         id="tspan817-6-9"
+         x="115.10333"
+         y="152.75484"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458332">Nodo</tspan><tspan
+         sodipodi:role="line"
+         x="115.10333"
+         y="161.57428"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan821-2-2">7</tspan></text>
+    <circle
+       style="fill:#0090ff;fill-opacity:1;stroke:#000000;stroke-width:0.60780746;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path815-6-2"
+       cx="145.23735"
+       cy="152.14062"
+       r="9.7587299" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="145.53043"
+       y="152.18787"
+       id="text819-1-8"><tspan
+         sodipodi:role="line"
+         id="tspan817-8-9"
+         x="145.53043"
+         y="152.18787"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458332">Nodo</tspan><tspan
+         sodipodi:role="line"
+         x="145.53043"
+         y="161.00731"
+         style="text-align:center;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan821-7-7">8</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 79.119226,91.07551 53.597678,112.42785"
+       id="path943"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#path815"
+       inkscape:connection-end="#path815-3" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 40.350578,126.56519 26.362223,145.6826"
+       id="path945"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#path815-3"
+       inkscape:connection-end="#path815-36" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 47.496891,128.34968 2.146103,14.98145"
+       id="path947"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#path815-3"
+       inkscape:connection-end="#path815-6" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 20.500636,163.31617 -0.179842,17.71439"
+       id="path949"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#path815-36"
+       inkscape:connection-end="#path815-9" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 86.538311,94.571942 86.433056,110.25432"
+       id="path951"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#path815"
+       inkscape:connection-end="#path815-35" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 94.012479,91.165125 120.25279,113.66114"
+       id="path953"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#path815"
+       inkscape:connection-end="#path815-2" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 124.0916,129.09479 -5.71147,14.53066"
+       id="path955"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#path815-2"
+       inkscape:connection-end="#path815-36-7" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 132.34497,128.57391 8.20887,15.00546"
+       id="path959"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#path815-2"
+       inkscape:connection-end="#path815-6-2" />
+  </g>
+</svg>
