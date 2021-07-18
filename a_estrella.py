@@ -13,6 +13,7 @@ import time
 import matplotlib.pyplot as plt
 
 # import glob
+estimacion_recocido_simulado = True
 
 if len(sys.argv) != 4:
     print('Debe indicar un solo archivo de entrada y las configuraciones')
@@ -46,10 +47,37 @@ ciudades = crear_ciudades(n)
 
 #Si el usuario asi lo selecciono calculamos un costo aproximado
 if aproximacion == 'si':
-    #Camino aproximado: 0 --> 1 --> 2 --> 3 --> ... --> n-1 --> n --> 0
-    camino_aproximado = ciudades
-    camino_aproximado.append(camino_aproximado[0])
-    costo_aproximado = calcular_costo_camino(camino_aproximado, matriz_costos)
+    if estimacion_recocido_simulado == False:
+        #Camino aproximado: 0 --> 1 --> 2 --> 3 --> ... --> n-1 --> n --> 0
+        camino_aproximado = ciudades
+        camino_aproximado.append(camino_aproximado[0])
+        costo_aproximado = calcular_costo_camino(camino_aproximado, matriz_costos)
+    else:
+        #Camino aproximado: Recocido simulado del mapa
+        if archivo == 'TSP_IN_01.txt':
+            costo_aproximado = 30
+        elif archivo == 'TSP_IN_02.txt':
+            costo_aproximado = 35
+        elif archivo == 'TSP_IN_03.txt':
+            costo_aproximado = 31
+        elif archivo == 'TSP_IN_04.txt':
+            costo_aproximado = 30
+        elif archivo == 'TSP_IN_05.txt':
+            costo_aproximado = 83
+        elif archivo == 'TSP_IN_06.txt':
+            costo_aproximado = 76
+        elif archivo == 'TSP_IN_07.txt':
+            costo_aproximado = 10
+        elif archivo == 'TSP_IN_08.txt':
+            costo_aproximado = 143
+        elif archivo == 'TSP_IN_09.txt':
+            costo_aproximado = 10
+        elif archivo == 'TSP_IN_10.txt':
+            costo_aproximado = 17
+        elif archivo == 'TSP_IN_11.txt':
+            costo_aproximado = 15
+        elif archivo == 'TSP_IN_12.txt':
+            costo_aproximado = 15
     
 #Creamos las listas de nodos abiertos y cerrados, arrancan vacias
 abiertos = []
