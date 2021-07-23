@@ -6,7 +6,7 @@ Created on Sat Apr 17 10:44:57 2021
 """
 
 from TSP_lib import leer_lineas_archivo, calc_dim, matrix_TSP,\
-    guardar_resultados, imprimir_camino
+    guardar_resultados, imprimir_camino, SA_res
 from nodos_lib import Nodo, crear_ciudades, calcular_costo_camino
 import sys
 import time
@@ -17,7 +17,7 @@ estimacion_recocido_simulado = True
 
 if len(sys.argv) != 4:
     print('Debe indicar un solo archivo de entrada y las configuraciones')
-    print('Ejemplo:\n>>> a_estrella.py TSP_IN_01.txt 3 si')
+    print('Ejemplo:\npython a_estrella.py TSP_IN_01.txt 4 si')
     exit()
 
 archivo = sys.argv[1]
@@ -54,30 +54,7 @@ if aproximacion == 'si':
         costo_aproximado = calcular_costo_camino(camino_aproximado, matriz_costos)
     else:
         #Camino aproximado: Recocido simulado del mapa
-        if archivo == 'TSP_IN_01.txt':
-            costo_aproximado = 30
-        elif archivo == 'TSP_IN_02.txt':
-            costo_aproximado = 35
-        elif archivo == 'TSP_IN_03.txt':
-            costo_aproximado = 31
-        elif archivo == 'TSP_IN_04.txt':
-            costo_aproximado = 30
-        elif archivo == 'TSP_IN_05.txt':
-            costo_aproximado = 83
-        elif archivo == 'TSP_IN_06.txt':
-            costo_aproximado = 76
-        elif archivo == 'TSP_IN_07.txt':
-            costo_aproximado = 10
-        elif archivo == 'TSP_IN_08.txt':
-            costo_aproximado = 143
-        elif archivo == 'TSP_IN_09.txt':
-            costo_aproximado = 10
-        elif archivo == 'TSP_IN_10.txt':
-            costo_aproximado = 17
-        elif archivo == 'TSP_IN_11.txt':
-            costo_aproximado = 15
-        elif archivo == 'TSP_IN_12.txt':
-            costo_aproximado = 15
+        costo_aproximado = SA_res(int(archivo[-6:-4]))
     
 #Creamos las listas de nodos abiertos y cerrados, arrancan vacias
 abiertos = []
@@ -225,3 +202,4 @@ plt.ylabel('Almacenamiento [bytes]')
 plt.title(archivo + ' h{}'.format(tipo_heuristica) + ' ' + msg_aprox[0:-1])
 plt.savefig('Resultados/' + archivo[0:9] + '_{}_'.format(tipo_heuristica) + msg_aprox +'almacenamiento' + '.png')
     
+print('Umbral = {}'.format(costo_aproximado))
